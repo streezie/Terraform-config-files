@@ -1,6 +1,5 @@
-resource "local_file" "foo" {
-  content  = "new test class!"
-  filename = "${path.module}/${count.index}.txt"
-  count = 3
+resource "local_sensitive_file" "test" {
+  content  = "New state file"
+  filename = "${path.module}/sensitive.txt"
 }
 
