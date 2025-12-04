@@ -1,17 +1,20 @@
-resource "local_sensitive_file" "example1" {
-  content  = "New state file"
-  filename = "${path.module}/${var.filename1}.txt"
-  count = 3
+resource "local_file" "example1" {
+  content  = "foo!"
+  filename = "${path.module}/${var.filename-1}.txt"
+  count = var.count_example1
 }
 
-resource "local_sensitive_file" "example2" {
-  content  = "New state file"
-  filename = "${path.module}/${var.filename2}.txt"
-  count = 3
+
+locals {
+  environment = "dev" #created an environment called dev
+  upper_case = upper(local.environment) #converted the environment to upper
+  base_path = "${path.module}/configs/${local.upper_case}" #append the upper case to the base path 
 }
 
-resource "local_sensitive_file" "testexample3" {
-  content  = "New state file"
-  filename = "${path.module}/${var.filename3}.txt"
-  count = var.count_num
+
+resource "local_file" "service_configs" {
+    filename = "${local.base_path}/server.sh"
+    content = <<EOT
+    environment = ${local.environment}
+    EOT 
 }

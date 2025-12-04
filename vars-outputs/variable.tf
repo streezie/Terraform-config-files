@@ -1,27 +1,13 @@
-#This is an input variable using to input value into the main.tf file
-variable "filename1" {
-  description = "this is the name of file"
+variable "filename-1" {
   type        = string
-  default     = "example1"
+  description = "This is the name of file 1"
+  default     = "example01"
 }
 
-#This is an input variable using to input value into the main.tf file
-variable "filename2" {
-  description = "this is the name of file"
-  type        = string
-  default     = "example2"
-}
 
-#This is an input variable using to input value into the main.tf file
-variable "filename3" {
-  description = "this is the name of file"
-  type        = string
-  default     = "example3"
-}
-
-#This is an input variable using to input value into the main.tf file
-variable "count_num" {
-  description = "Number of instances to provision."
+variable "count_example1" {
   type        = number
+  description = "This is the count of file 1"
   default     = 2
 }
+
