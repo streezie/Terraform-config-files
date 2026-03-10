@@ -1,0 +1,16 @@
+name: use case 1 #workflow name 
+on: push #how workflow will be triggered
+jobs:
+  deploy: #name of the job
+    runs-on: ubuntu-latest #environment where job will run on
+    steps: #tasks to be carried out to complete the job
+      - name: Get code #name of the task to be carry out 
+        uses: actions/checkout # Used only when using an action
+      - name: Install dependencies
+        run: npm ci
+      - name: lint
+        run: npm run lint
+      - name: Test code
+        run: npm run test
+      - name: Build code 
+        run: npm run build 
